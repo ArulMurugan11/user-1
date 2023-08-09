@@ -1,12 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const dbconfig = require("./config/db");
+//const dbconfig = require("./config/db");
+require("dotenv").config();
 const app = express();
 
 const userRoute = require("./routes/user.route");
 
 mongoose.Promise = global.Promise;
-mongoose.connect(dbconfig.db).then(
+mongoose.connect(process.env.db).then(
   () => {
     console.log("Database Connected Successfully");
   },
